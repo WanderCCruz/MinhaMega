@@ -1,11 +1,15 @@
-﻿namespace MinhaMega;
+﻿using MinhaMega.ViewModels;
+using MinhaMega.Views;
+
+namespace MinhaMega;
 
 public partial class App : Application
 {
-	public App()
+    public App()
 	{
 		InitializeComponent();
-
 		MainPage = new AppShell();
+
+		Routing.RegisterRoute(nameof(HomePage),typeof(HomePage));
 	}
 }
