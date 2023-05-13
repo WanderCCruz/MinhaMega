@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using MinhaMega.Api;
+using MinhaMega.ViewModels;
+using MinhaMega.Views;
 
 namespace MinhaMega;
 
@@ -14,9 +17,17 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+		builder.Services.AddSingleton<HomePage>();
+        builder.Services.AddSingleton<HomePageViewModel>();
+
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainPageViewModel>();
+
+		builder.Services.AddTransient<ILoteriaApi,LoteriaApi>();
+
 
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();
