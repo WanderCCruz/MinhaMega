@@ -16,5 +16,7 @@ namespace MinhaMega.ViewModels
         {
             await Shell.Current.GoToAsync("..");
         }
+        [ObservableProperty]
+        public string text;
     }
 }

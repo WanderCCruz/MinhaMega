@@ -8,6 +8,6 @@ namespace MinhaMega.Api
 {
     public interface ILoteriaApi
     {
-        Task<string> Concurso(int numeroConcurso);
+        Task<string> Concurso(int? numeroConcurso);
     }
 }

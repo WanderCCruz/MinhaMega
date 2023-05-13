@@ -18,10 +18,19 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
+                Text="{Binding Result}"
+                FontSize="32"
+                HorizontalOptions="Center" 
+                BindingContext="{Binding Result}"/>
+            <Entry
+                Text="{Binding Text}"
                 FontSize="32"
                 HorizontalOptions="Center" />
+            <Label
+                Text="{Binding Text}"
+                FontSize="32"
+                HorizontalOptions="Center" />
+            
 
             <Label
                 Text="Welcome to .NET Multi-platform App UI"
@@ -35,6 +44,12 @@
                 Text="Click me"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Command="{Binding ParaMainPageCommand}"
+                HorizontalOptions="Center" />
+            <Button
+                x:Name="MegaSenaBtn"
+                Text="MegaSena"
+                SemanticProperties.Hint=""
+                Command="{Binding MegaSenaCommand}"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>

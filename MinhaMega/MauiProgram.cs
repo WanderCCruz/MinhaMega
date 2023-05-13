@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MinhaMega.Api;
 using MinhaMega.ViewModels;
 using MinhaMega.Views;
 
@@ -21,6 +22,9 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
+
+		builder.Services.AddTransient<ILoteriaApi,LoteriaApi>();
+
 
 #if DEBUG
         builder.Logging.AddDebug();

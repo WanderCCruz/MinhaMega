@@ -8,7 +8,7 @@
     
     <VerticalStackLayout>
         <Label 
-            Text="{Binding }"
+            Text="{Binding Text}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Button

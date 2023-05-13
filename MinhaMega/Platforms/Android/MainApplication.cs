@@ -3,6 +3,7 @@ using Android.Runtime;
 
 namespace MinhaMega;
 
+
 [Application]
 public class MainApplication : MauiApplication
 {
