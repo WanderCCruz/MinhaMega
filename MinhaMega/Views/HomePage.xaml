@@ -5,17 +5,17 @@
              xmlns:viewmodels="clr-namespace:MinhaMega.ViewModels"
              x:DataType="viewmodels:HomePageViewModel"
              Title="HomePage">
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Text}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Command="{Binding VoltarCommand}"
-                HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ListView ItemsSource="{Binding}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
+                        
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

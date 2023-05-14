@@ -18,5 +18,7 @@ namespace MinhaMega.ViewModels
         }
         [ObservableProperty]
         public string text;
+
+        ListView lista;
     }
 }
