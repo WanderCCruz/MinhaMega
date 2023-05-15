@@ -21,14 +21,15 @@ namespace MinhaMega.ViewModels
         {
             _api = api;
         }
-        MegaSena megaSena { get; set; }
+        [ObservableProperty]
+        MegaSena mega;
         [RelayCommand]
         async Task ParaMainPage()
         {
             await Shell.Current.GoToAsync(nameof(HomePage));
         }
         [RelayCommand]
-        async Task<string> MegaSena()
+        async Task MegaSena()
         {
             if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
                 result = await _api.Concurso(2590);
@@ -37,9 +38,10 @@ namespace MinhaMega.ViewModels
                 DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true
             };
-            megaSena = JsonSerializer.Deserialize<MegaSena>(result,options);
-            await Shell.Current.DisplayAlert("teste",result,"ok");
-            return result;
+            mega = JsonSerializer.Deserialize<MegaSena>(result,options);
+            var a = nameof(HomePage);
+             await Shell.Current.GoToAsync($"{a}?mega={mega}");
+            //await Shell.Current.DisplayAlert("teste",result,"ok");
         }
     }
 }

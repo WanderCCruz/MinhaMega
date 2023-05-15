@@ -17,7 +17,6 @@ namespace MinhaMega.Api
                 var mega = new MockJSon().MegaSenaString();
                 return mega;
 #endif
-
                 HttpResponseMessage response = await httpClient.GetAsync("");
                 if (response.IsSuccessStatusCode)
                     return response.Content.ReadAsStringAsync().Result;
@@ -25,8 +24,6 @@ namespace MinhaMega.Api
             {
                 return ex.InnerException.ToString();
             }
-            
-            return "Sem Resultado";
         }
     }
 }

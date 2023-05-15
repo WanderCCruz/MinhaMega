@@ -6,16 +6,18 @@
              x:DataType="viewmodels:HomePageViewModel"
              Title="HomePage">
 
-    <ListView ItemsSource="{Binding}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid Padding="10">
-                        <Label Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="Center" />
-                        
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <Grid  Margin="1">
+        <Label FontSize="15" BackgroundColor="Aqua" Text="ssss" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding Mega.Acumulado}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding Mega.DataProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding Mega.ListaDezenas}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding Mega.ValorEstimadoProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding Mega.ListaRateioPremio}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label Text="{Binding Mega.ListaMunicipioUFGanhadores}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label></Label>
+        <Label></Label>
+        <Label></Label>
+        <Label></Label>
+        <Label></Label>
+    </Grid>
 </ContentPage>

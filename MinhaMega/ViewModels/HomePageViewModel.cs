@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.Controls;
+using MinhaMega.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace MinhaMega.ViewModels
 {
+    [QueryProperty(nameof(mega), nameof(mega))]
     public partial class HomePageViewModel : ObservableObject
     {
 
@@ -17,8 +20,6 @@ namespace MinhaMega.ViewModels
             await Shell.Current.GoToAsync("..");
         }
         [ObservableProperty]
-        public string text;
-
-        ListView lista;
+        MegaSena mega;
     }
 }

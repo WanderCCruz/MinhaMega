@@ -61,11 +61,11 @@
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionMinhaMegaHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
-	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
-		<AndroidKeyStore>True</AndroidKeyStore>
-		<AndroidSigningKeyStore>key.keystore</AndroidSigningKeyStore>
-		<AndroidSigningStorePass>Links123@</AndroidSigningStorePass>
-		<AndroidSigningKeyAlias>MinhaMega</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass>Links123@</AndroidSigningKeyPass>
-	</PropertyGroup>
+	<!--PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'"-->
+		<!--AndroidKeyStore>True</AndroidKeyStore-->
+		<!--AndroidSigningKeyStore>key.keystore</AndroidSigningKeyStore-->
+		<!--AndroidSigningStorePass>Links123@</AndroidSigningStorePass-->
+		<!--AndroidSigningKeyAlias>MinhaMega</AndroidSigningKeyAlias-->
+		<!--AndroidSigningKeyPass>Links123@</AndroidSigningKeyPass-->
+	<!--/PropertyGroup-->
 </Project>
