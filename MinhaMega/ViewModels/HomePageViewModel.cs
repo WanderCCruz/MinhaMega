@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace MinhaMega.ViewModels
 {
-    [QueryProperty(nameof(mega), nameof(mega))]
+    [QueryProperty(nameof(ResultadoMega), nameof(ResultadoMega))]
+    [QueryProperty(nameof(Test), nameof(Test))]
     public partial class HomePageViewModel : ObservableObject
     {
 
@@ -20,6 +21,9 @@ namespace MinhaMega.ViewModels
             await Shell.Current.GoToAsync("..");
         }
         [ObservableProperty]
-        MegaSena mega;
+        MegaSena resultadoMega;
+        [ObservableProperty]
+        int test;
+
     }
 }

@@ -6,18 +6,14 @@
              x:DataType="viewmodels:HomePageViewModel"
              Title="HomePage">
 
-    <Grid  Margin="1">
-        <Label FontSize="15" BackgroundColor="Aqua" Text="ssss" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label Text="{Binding Mega.Acumulado}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label Text="{Binding Mega.DataProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label Text="{Binding Mega.ListaDezenas}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label Text="{Binding Mega.ValorEstimadoProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label Text="{Binding Mega.ListaRateioPremio}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label Text="{Binding Mega.ListaMunicipioUFGanhadores}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label></Label>
-        <Label></Label>
-        <Label></Label>
-        <Label></Label>
-        <Label></Label>
-    </Grid>
+    <StackLayout  Margin="10">
+        <Label  FontSize="15" BackgroundColor="Aqua" Text="{Binding ResultadoMega.Numero}" VerticalOptions="Center" HorizontalOptions="Start" />
+        <Label FontSize="15" Text="{Binding ResultadoMega.Acumulado}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label FontSize="15" Text="{Binding ResultadoMega.DataProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label FontSize="15" Text="{Binding ResultadoMega.ListaDezenas}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label FontSize="15" Text="{Binding ResultadoMega.ValorEstimadoProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label FontSize="15" Text="{Binding ResultadoMega.ListaRateioPremio}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label FontSize="15" Text="{Binding ResultadoMega.ListaMunicipioUFGanhadores}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label FontSize="50" BackgroundColor="Azure" Text="{Binding Test}" VerticalOptions="Center" HorizontalOptions="Center" />
+    </StackLayout>
 </ContentPage>
