@@ -6,12 +6,30 @@
              x:DataType="viewmodels:HomePageViewModel"
              Title="HomePage">
 
-    <StackLayout  Margin="10">
-        <Label  FontSize="15" BackgroundColor="Aqua" Text="{Binding ResultadoMega.Numero}" VerticalOptions="Center" HorizontalOptions="Start" />
-        <Label FontSize="15" Text="{Binding ResultadoMega.Acumulado}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label FontSize="15" Text="{Binding ResultadoMega.DataProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <StackLayout   Padding="5" Margin="12">
+        <HorizontalStackLayout>
+            <Label FontSize="20" Text="Concurso: " Margin="0,-1,0,0"/>
+            <Label FontSize="20" Text="{Binding ResultadoMega.Numero}"  />
+            <Label FontSize="20" Text="{Binding ResultadoMega.DataApuracao}" Margin="100,0,0,0" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label FontSize="20" Text="Próximo concurso:"/>
+            <Label FontSize="20" Text="{Binding ResultadoMega.DataProximoConcurso}" Margin="40,0,0,0"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label FontSize="20" Text="Premêo acumulado!!! " IsVisible="{Binding ResultadoMega.Acumulado}" VerticalOptions="Center" HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+            <CollectionView ItemsSource="{Binding ResultadoMega.ListaDezenas}" Margin="5" BackgroundColor="Gray">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="30"  />
+                    
+                </CollectionView.ItemsLayout>
+            </CollectionView>
         <Label FontSize="15" Text="{Binding ResultadoMega.ListaDezenas}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Label FontSize="15" Text="{Binding ResultadoMega.ValorEstimadoProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <HorizontalStackLayout Padding="10">
+            <Label FontSize="15" Text="{Binding ResultadoMega.ValorEstimadoProximoConcurso}" VerticalOptions="Center" HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        
         <Label FontSize="15" Text="{Binding ResultadoMega.ListaRateioPremio}" VerticalOptions="Center" HorizontalOptions="Center" />
         <Label FontSize="15" Text="{Binding ResultadoMega.ListaMunicipioUFGanhadores}" VerticalOptions="Center" HorizontalOptions="Center" />
         <Label FontSize="50" BackgroundColor="Azure" Text="{Binding Test}" VerticalOptions="Center" HorizontalOptions="Center" />
