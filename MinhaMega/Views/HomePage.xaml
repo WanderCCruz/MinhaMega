@@ -4,6 +4,7 @@
              x:Class="MinhaMega.Views.HomePage"
              xmlns:viewmodels="clr-namespace:MinhaMega.ViewModels"
              x:DataType="viewmodels:HomePageViewModel"
+            xmlns:models="clr-namespace:MinhaMega.Models"
              Title="HomePage">
 
     <StackLayout   Padding="5" Margin="12">
@@ -27,7 +28,7 @@
         <Label FontSize="50" BackgroundColor="Azure" Text="{Binding Test}" VerticalOptions="Center" HorizontalOptions="Center" />
         <CollectionView ItemsSource="{Binding ResultadoMega.ListaRateioPremio}" HorizontalOptions="Center">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:RateioPremio">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" ></RowDefinition>
@@ -63,7 +64,7 @@
         </CollectionView>
         <CollectionView ItemsSource="{Binding ResultadoMega.ListaMunicipioUFGanhadores}" Margin="5"  ItemsLayout="HorizontalList">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:ListaMunicipioUFGanhadores">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" ></RowDefinition>
