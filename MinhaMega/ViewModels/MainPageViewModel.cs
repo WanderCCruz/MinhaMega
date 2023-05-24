@@ -28,7 +28,12 @@ namespace MinhaMega.ViewModels
         {
             Test = 50;
             if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
-                result = await _api.Concurso(2590);
+                result = await _api.Concurso(2591);
+            if(result.Length == 0)
+            {
+                await Shell.Current.DisplayAlert("Atenção","Houve algum problema com a solicitação, tente mais tarde","OK");
+                return ;
+            }
             var options = new JsonSerializerOptions
             {
                 DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
@@ -40,7 +45,6 @@ namespace MinhaMega.ViewModels
              {
                  ["ResultadoMega"] = resultadoMega
              });
-            //await Shell.Current.DisplayAlert("teste",result,"ok");
         }
     }
 }

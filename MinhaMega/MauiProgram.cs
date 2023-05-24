@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using MinhaMega.Api;
 using MinhaMega.ViewModels;
 using MinhaMega.Views;
@@ -12,7 +13,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -24,12 +26,26 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPageViewModel>();
 
 		builder.Services.AddTransient<ILoteriaApi,LoteriaApi>();
+		
 
 
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+		builder.Services.AddHttpClient("",HttpClient => HttpClient.BaseAddress = 
+		new Uri("https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena/2592")).ConfigurePrimaryHttpMessageHandler(() =>
+        {
+            return new HttpClientHandler
+            {
+                AllowAutoRedirect = false,
+                UseDefaultCredentials = true,
+                ServerCertificateCustomValidationCallback =
+    (sender, cert, chain, sslPolicyErrors) => { return true; }
+        };
+        });
+        builder.Services.AddSingleton<LoteriaApi>();
+        return builder.Build();
+
 	}
 }
