@@ -33,16 +33,14 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
-		builder.Services.AddHttpClient("",HttpClient => HttpClient.BaseAddress = 
-		new Uri("https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena/2592")).ConfigurePrimaryHttpMessageHandler(() =>
+		builder.Services.AddHttpClient("").ConfigurePrimaryHttpMessageHandler(() =>
         {
             return new HttpClientHandler
             {
                 AllowAutoRedirect = false,
                 UseDefaultCredentials = true,
-                ServerCertificateCustomValidationCallback =
-    (sender, cert, chain, sslPolicyErrors) => { return true; }
-        };
+                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }
+            };
         });
         builder.Services.AddSingleton<LoteriaApi>();
         return builder.Build();

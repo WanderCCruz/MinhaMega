@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 namespace MinhaMega.ViewModels
 {
     [QueryProperty(nameof(ResultadoMega), nameof(ResultadoMega))]
-    [QueryProperty(nameof(Test), nameof(Test))]
     public partial class HomePageViewModel : ObservableObject
     {
 
@@ -22,8 +21,5 @@ namespace MinhaMega.ViewModels
         }
         [ObservableProperty]
         MegaSena resultadoMega;
-        [ObservableProperty]
-        int test;
-
     }
 }
