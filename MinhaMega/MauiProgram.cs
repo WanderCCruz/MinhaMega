@@ -25,7 +25,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
 
-		builder.Services.AddTransient<ILoteriaApi,LoteriaApi>();
+		builder.Services.AddTransient(typeof(ILoteriaApi<>),typeof(LoteriaApi<>));
 		
 
 
@@ -42,7 +42,6 @@ public static class MauiProgram
                 ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }
             };
         });
-        builder.Services.AddSingleton<LoteriaApi>();
         return builder.Build();
 
 	}

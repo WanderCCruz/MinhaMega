@@ -9,10 +9,10 @@ namespace MinhaMega.ViewModels
 {
     public partial class MainPageViewModel : ObservableObject
     {
-        private readonly ILoteriaApi _api;
-        string result;
+        private readonly ILoteriaApi<MegaSena> _api;
+        MegaSena result;
 
-        public MainPageViewModel(ILoteriaApi api)
+        public MainPageViewModel(ILoteriaApi<MegaSena> api)
         {
             _api = api;
         }
@@ -25,23 +25,17 @@ namespace MinhaMega.ViewModels
         async Task MegaSena()
         {
             if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
-                result = await _api.Concurso(null);
-            if(result.Length == 0)
+                result = await _api.Concurso("megasena",null);
+            else
             {
-                await Shell.Current.DisplayAlert("Atenção","Houve algum problema com a solicitação, tente mais tarde","OK");
-                return ;
+                await Shell.Current.DisplayAlert("Atenção", "Verifique se sua internet esta funcionando !!!", "OK");
+                return;
             }
-            var options = new JsonSerializerOptions
+
+            await Shell.Current.GoToAsync($"{nameof(HomePage)}", new Dictionary<string, object>
             {
-                DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            };
-            var resultadoMega = JsonSerializer.Deserialize<MegaSena>(result,options);
-            
-             await Shell.Current.GoToAsync($"{nameof(HomePage)}", new Dictionary<string, object>
-             {
-                 ["ResultadoMega"] = resultadoMega
-             });
+                 ["ResultadoMega"] = result
+            });
         }
     }
 }
