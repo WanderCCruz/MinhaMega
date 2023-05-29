@@ -32,8 +32,9 @@ namespace MinhaMega.ViewModels
         [RelayCommand]
         async Task BuscaConcurso(string concurso)
         {
+            //TODO  tratar quando buscar concurso inesistente
             if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
-                ResultadoMega = await _api.Concurso(nameof(MegaSena).ToLower(), (Convert.ToInt32(concurso)));
+                ResultadoMega = await _api.Concurso(nameof(MegaSena), (Convert.ToInt32(concurso)));
             else
             {
                 await Shell.Current.DisplayAlert("Atenção", "Verifique se sua internet esta funcionando !!!", "OK");

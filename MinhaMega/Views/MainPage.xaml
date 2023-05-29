@@ -27,7 +27,7 @@
                 x:Name="MegaSenaBtn"
                 Text="MegaSena"
                 SemanticProperties.Hint=""
-                Command="{Binding MegaSenaCommand}"
+                Command="{Binding BuscaMegaSenaCommand}"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>

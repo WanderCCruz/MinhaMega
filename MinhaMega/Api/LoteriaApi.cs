@@ -22,7 +22,7 @@ namespace MinhaMega.Api
          {
             try
             {
-                var response = await _httpClient.GetAsync($"{_baseAddress}/{jogo}/{numeroConcurso}");
+                var response = await _httpClient.GetAsync($"{_baseAddress}/{jogo.ToLower()}/{numeroConcurso}");
 
                 if (response.IsSuccessStatusCode)
                 {

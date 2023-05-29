@@ -22,10 +22,10 @@ namespace MinhaMega.ViewModels
             await Shell.Current.GoToAsync(nameof(HomePage));
         }
         [RelayCommand]
-        async Task MegaSena()
+        async Task BuscaMegaSena()
         {
             if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
-                result = await _api.Concurso("megasena",null);
+                result = await _api.Concurso(nameof(MegaSena),null);
             else
             {
                 await Shell.Current.DisplayAlert("Atenção", "Verifique se sua internet esta funcionando !!!", "OK");
