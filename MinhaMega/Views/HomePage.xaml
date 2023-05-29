@@ -13,7 +13,7 @@
             <Style TargetType="Ellipse" x:Key="dezenasSorteadas">
                 <Setter Property="HeightRequest" Value="42"/>
                 <Setter Property="WidthRequest" Value="42"/>
-                <Setter Property="Fill" Value="#306f4d"/>
+                <Setter Property="Fill" Value="#6f6ff7"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
@@ -41,23 +41,33 @@
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="Margin" Value="8"/>
+                <Setter Property="Margin" Value="0,-15,0,0"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="Keyboard" Value="Numeric"/>
+                
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <StackLayout   Padding="5" Margin="12">
-        <HorizontalStackLayout BackgroundColor="Gray">
-                <Label FontSize="20" Text="Concurso: " Margin="0,10,0,0"/>
+    <StackLayout   Padding="2" Margin="2">
+        <HorizontalStackLayout>
+                <Label FontSize="20" Text="Concurso: " Margin="0,0,0,0"/>
                 <Entry x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}"/>
                 <Label FontSize="20" Text="{Binding ResultadoMega.DataApuracao}" Margin="100,0,0,0" />
             
         </HorizontalStackLayout>
-            <Button  x:Name="Busca" Style="{StaticResource ButtonBuscaConcurso}" 
-                        Text="Pesquisar concurso" Command="{Binding BuscaConcursoCommand}" 
+        <StackLayout HorizontalOptions="Center">
+            
+            <!--<ImageButton  x:Name="Busca" Style="{StaticResource ButtonBuscaConcurso}" BackgroundColor="Black" Padding="5" Margin="7" Source="search.svg" Aspect="AspectFit" HeightRequest="30" WidthRequest="30"
+                         Command="{Binding BuscaConcursoCommand}" 
+                        CommandParameter="{Binding Source={x:Reference EntryConcurso}, Path=Text}"/>-->
+
+            <Button  x:Name="Busca2" Style="{StaticResource ButtonBuscaConcurso}"  BackgroundColor="#306f4d" Padding="8" Margin="2" HorizontalOptions="Center"
+                     ImageSource="search.svg" HeightRequest="40" WidthRequest="200"
+                         Command="{Binding BuscaConcursoCommand}" 
                         CommandParameter="{Binding Source={x:Reference EntryConcurso}, Path=Text}"/>
+        </StackLayout>
+        
         
         
         <HorizontalStackLayout>
