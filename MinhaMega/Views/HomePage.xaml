@@ -44,7 +44,10 @@
                 <Setter Property="Margin" Value="0,-15,0,0"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="Keyboard" Value="Numeric"/>
-                
+                <Setter Property="MaxLength" Value="4"/>
+                <Setter Property="CursorPosition" Value="4"/>
+                <Setter Property="WidthRequest" Value="100"/>
+
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -52,8 +55,8 @@
     <StackLayout   Padding="2" Margin="2">
         <HorizontalStackLayout>
                 <Label FontSize="20" Text="Concurso: " Margin="0,0,0,0"/>
-                <Entry x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}"/>
-                <Label FontSize="20" Text="{Binding ResultadoMega.DataApuracao}" Margin="100,0,0,0" />
+                <Entry x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}" Placeholder="Concurso"/>
+                <Label FontSize="20" Text="{Binding ResultadoMega.DataApuracao}" Margin="60,0,0,0" />
             
         </HorizontalStackLayout>
         <StackLayout HorizontalOptions="Center">

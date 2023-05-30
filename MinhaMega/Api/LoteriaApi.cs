@@ -18,7 +18,7 @@ namespace MinhaMega.Api
             _httpClientFactory = httpClientFactory;
         }
         private HttpClient _httpClient => _httpClientFactory.CreateClient();
-        public async Task<T> Concurso(string jogo,int? numeroConcurso)
+        public async Task<T> Concurso(string jogo,string numeroConcurso)
          {
             try
             {
@@ -33,21 +33,10 @@ namespace MinhaMega.Api
                 }else
                 throw new Exception($"status code:{response.StatusCode}, {response.Content}");
             }
-            catch (IndexOutOfRangeException)
-            {
-                await Shell.Current.DisplayAlert("Atenção", "Concurso não encontrado, tente outro numero", "OK");
-                await Shell.Current.GoToAsync(nameof(MainPage));
-            }
-            catch(Exception e)
-            {
-                await Shell.Current.DisplayAlert("Atenção",e.InnerException.Message, "OK");
-                await Shell.Current.GoToAsync(nameof(MainPage));
-            }
             finally
             {
                 _httpClient.Dispose();
             }
-            return default;
         }
     }
 }

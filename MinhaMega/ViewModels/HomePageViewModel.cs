@@ -1,13 +1,10 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Android.OS;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.Controls;
+using Microsoft.Maui;
+using Microsoft.Maui.Platform;
 using MinhaMega.Api;
 using MinhaMega.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MinhaMega.ViewModels
 {
@@ -32,13 +29,38 @@ namespace MinhaMega.ViewModels
         [RelayCommand]
         async Task BuscaConcurso(string concurso)
         {
-            //TODO  tratar quando buscar concurso inesistente
-            if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
-                ResultadoMega = await _api.Concurso(nameof(MegaSena), (Convert.ToInt32(concurso)));
-            else
+            try
             {
-                await Shell.Current.DisplayAlert("Atenção", "Verifique se sua internet esta funcionando !!!", "OK");
-                return;
+                if (concurso == null)
+                    throw new IndexOutOfRangeException("Digite um numero de concurso");
+#if ANDROID
+                    Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
+#endif
+                if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
+                {
+                    var resul = await _api.Concurso(nameof(MegaSena), (concurso));
+                    if (resul == null)
+                        await Shell.Current.DisplayAlert("Atenção", "Concurso não encontrado !!!", "OK");
+                    else ResultadoMega = resul;
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("Atenção", "Verifique se sua internet esta funcionando !!!", "OK");
+                    return;
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                await Shell.Current.DisplayAlert("Atenção", $"{e.Message}", "OK");
+                await Shell.Current.GoToAsync(nameof(MainPage));
+            }
+            catch (Exception e)
+            {
+                string msg = "Concurso não encontrado\n";
+#if DEBUG
+                msg += e.Message;
+#endif
+                await Shell.Current.DisplayAlert("Atenção", msg, "OK");
             }
         }
     }
