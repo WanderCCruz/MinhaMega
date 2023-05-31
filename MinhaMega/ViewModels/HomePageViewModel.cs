@@ -1,7 +1,5 @@
-﻿using Android.OS;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui;
 using Microsoft.Maui.Platform;
 using MinhaMega.Api;
 using MinhaMega.Models;

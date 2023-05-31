@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.Input;
 using MinhaMega.ViewModels;
 
 namespace MinhaMega.Views;

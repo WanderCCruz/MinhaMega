@@ -144,7 +144,7 @@
                 </CollectionView>
             </StackLayout>
 
-            <StackLayout Margin="10">
+            <StackLayout HorizontalOptions="Center" Margin="10">
                 <Label Text="Dezenas Sorteadas" Style="{StaticResource LabelTitulo}"/>
                 <CollectionView ItemsSource="{Binding ResultadoMega.ListaDezenas}" Margin="0"  ItemsLayout="HorizontalList">
                     <CollectionView.ItemTemplate>

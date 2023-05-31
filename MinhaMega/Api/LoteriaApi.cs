@@ -1,10 +1,4 @@
-﻿using MinhaMega.Models;
-using System.Linq;
-using System.Net;
-using System.Net.Http.Json;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace MinhaMega.Api
 {
