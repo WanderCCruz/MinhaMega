@@ -34,6 +34,7 @@ namespace MinhaMega.ViewModels
                 if (concurso == null)
                     throw new IndexOutOfRangeException("Digite um numero de concurso");
 #if ANDROID
+                if(Platform.CurrentActivity.CurrentFocus != null)
                     Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
 #endif
                 if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)

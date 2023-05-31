@@ -21,7 +21,7 @@ namespace MinhaMega.Api
         public async Task<T> Concurso(string jogo,string numeroConcurso)
          {
             try
-            {
+             {
                 var response = await _httpClient.GetAsync($"{_baseAddress}/{jogo.ToLower()}/{numeroConcurso}");
 
                 if (response.IsSuccessStatusCode)
