@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MinhaMega.Api
 {
-    public interface ILoteriaApi
+    public interface ILoteriaApi<T> where T : class
     {
-        Task<string> Concurso(int? numeroConcurso);
+        Task<T> Concurso(string jogo,string numeroConcurso);
     }
 }

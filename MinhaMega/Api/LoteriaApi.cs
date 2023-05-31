@@ -1,26 +1,36 @@
-﻿using System.Net;
+﻿using System.Text.Json;
 
 namespace MinhaMega.Api
 {
-    public class LoteriaApi : ILoteriaApi
+    public class LoteriaApi<T> : ILoteriaApi<T> where T : class
     {
-        private readonly HttpClient httpClient = new();
-        string urlBase = "https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena";
+        private readonly IHttpClientFactory _httpClientFactory;
+        private string _baseAddress = "https://servicebus2.caixa.gov.br/portaldeloterias/api";
 
-        public async Task<string> Concurso(int? numeroConcurso)
+        public LoteriaApi(IHttpClientFactory httpClientFactory)
         {
-            httpClient.BaseAddress = new Uri(urlBase);
+            _httpClientFactory = httpClientFactory;
+        }
+        private HttpClient _httpClient => _httpClientFactory.CreateClient();
+        public async Task<T> Concurso(string jogo,string numeroConcurso)
+         {
             try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync("");
+             {
+                var response = await _httpClient.GetAsync($"{_baseAddress}/{jogo.ToLower()}/{numeroConcurso}");
+
                 if (response.IsSuccessStatusCode)
-                    return response.Content.ReadAsStringAsync().Result;
-            }catch (Exception ex)
-            {
-                return ex.InnerException.ToString();
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    if (result.Length == 0)
+                        throw new IndexOutOfRangeException(result);
+                    return JsonSerializer.Deserialize<T>(result);
+                }else
+                throw new Exception($"status code:{response.StatusCode}, {response.Content}");
             }
-            
-            return "Sem Resultado";
+            finally
+            {
+                _httpClient.Dispose();
+            }
         }
     }
 }

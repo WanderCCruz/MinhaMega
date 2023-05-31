@@ -5,39 +5,17 @@
              xmlns:viewmodels="clr-namespace:MinhaMega.ViewModels"
              x:DataType="viewmodels:MainPageViewModel">
 
-    <ScrollView>
+    <Grid>
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
+            Spacing="10"
+            Padding="10,0">
             <Label
-                Text="{Binding Result}"
-                FontSize="32"
+                Text="Loterias"
+                FontSize="24"
                 HorizontalOptions="Center" 
-                BindingContext="{Binding Result}"/>
-            <Entry
-                Text="{Binding Text}"
-                FontSize="32"
-                HorizontalOptions="Center" />
-            <Label
-                Text="{Binding Text}"
-                FontSize="32"
-                HorizontalOptions="Center" />
-            
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                VerticalTextAlignment="Center"
+                VerticalOptions="Start"
+                 />
 
             <Button
                 x:Name="CounterBtn"
@@ -49,10 +27,10 @@
                 x:Name="MegaSenaBtn"
                 Text="MegaSena"
                 SemanticProperties.Hint=""
-                Command="{Binding MegaSenaCommand}"
+                Command="{Binding BuscaMegaSenaCommand}"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
-    </ScrollView>
+    </Grid>
 
 </ContentPage>
