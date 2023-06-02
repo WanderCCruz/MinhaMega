@@ -26,7 +26,7 @@
             </Style>
             <Style TargetType="Label" x:Key="LabelRateioPremioCabeçalho">
                 <Setter Property="HorizontalOptions" Value="Start"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="18"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="Padding" Value="8"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
@@ -44,7 +44,7 @@
             </Style>
             <Style TargetType="Label" x:Key="LabelTitulo">
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
@@ -69,7 +69,7 @@
         <StackLayout   Padding="2" Margin="2">
             <HorizontalStackLayout>
 
-                <Label  Text="Concurso: "  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
+                <Label  Text="Concurso: " Padding="0,4,0,0"  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
 
                 <Entry x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}" HorizontalOptions="Start"/>
 
@@ -79,7 +79,7 @@
 
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout HorizontalOptions="Start">
+            <HorizontalStackLayout HorizontalOptions="Start" Padding="0,10,0,0">
                 
                 <Label  Text="Data concurso: "  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
 
@@ -87,7 +87,7 @@
 
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Padding="0,10,0,0">
 
                 <Label Style="{StaticResource LabelTitulo}" Text="Próximo concurso: "/>
 
@@ -95,19 +95,19 @@
 
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Padding="0,10,0,0">
 
                 <Label Text="Prêmio acumulado!!! " IsVisible="{Binding ResultadoMega.Acumulado}" Style="{StaticResource LabelTitulo}"/>
 
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout  HorizontalOptions="StartAndExpand">
+            <StackLayout  HorizontalOptions="CenterAndExpand" Padding="0,10,0,0">
 
-                <Label Text="Prêmio próximo concurso: " Style="{StaticResource LabelTitulo}"/>
+                <Label Text="Prêmio próximo concurso" Style="{StaticResource LabelTitulo}"/>
 
-                <Label Text="{Binding ResultadoMega.ValorEstimadoProximoConcurso, Converter={local:DoubleToMoneyConverter}}" Style="{StaticResource LabelTitulo}"/>
+                <Label Text="{Binding ResultadoMega.ValorEstimadoProximoConcurso, Converter={local:DoubleToMoneyConverter}}" Style="{StaticResource LabelTitulo}" FontSize="26"/>
 
-            </HorizontalStackLayout>
+            </StackLayout>
 
             <StackLayout Margin="0,10,0,0">
                 <Grid BackgroundColor="#ebebeb" >
@@ -115,12 +115,12 @@
                         <RowDefinition ></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions >
-                        <ColumnDefinition ></ColumnDefinition>
-                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition Width="110"></ColumnDefinition>
+                        <ColumnDefinition Width="120"></ColumnDefinition>
                         <ColumnDefinition ></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Text="Acertos" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
-                    <Label Grid.Column="1" Text="N° Ganhadores" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
+                    <Label Grid.Column="1" Text="Ganhadores" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
                     <Label Grid.Column="2" Text="Prêmio" Style="{StaticResource LabelRateioPremioCabeçalho}" ></Label>
                 </Grid>
                 <CollectionView ItemsSource="{Binding ResultadoMega.ListaRateioPremio}" >
@@ -131,8 +131,8 @@
                                     <RowDefinition ></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions >
-                                    <ColumnDefinition ></ColumnDefinition>
-                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="110"></ColumnDefinition>
+                                    <ColumnDefinition Width="120"></ColumnDefinition>
                                     <ColumnDefinition ></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="{Binding DecricaoFaixa}" Style="{StaticResource LabelRateioPremio}"></Label>
