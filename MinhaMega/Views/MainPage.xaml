@@ -25,16 +25,10 @@
             <Button
                 x:Name="MegaSenaBtn"
                 ImageSource="logomegasena.png"
-                Text=""
+                BackgroundColor=""
                 SemanticProperties.Hint=""
                 Command="{Binding BuscaMegaSenaCommand}"
                 HorizontalOptions="Center" WidthRequest="180"  HeightRequest="50"/>
-            <Rectangle WidthRequest="250" HeightRequest="70" Fill="Aqua" RadiusX="10" RadiusY="10" Margin="10"/>
-
-
-            <Image Source="logomegasena.png" WidthRequest="290" HeightRequest="190" AnchorX="10" AnchorY="10">
-                
-            </Image>
 
         </VerticalStackLayout>
     </Grid>
