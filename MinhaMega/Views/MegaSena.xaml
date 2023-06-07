@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MinhaMega.Views.HomePage"
+             x:Class="MinhaMega.Views.MegaSena"
              xmlns:viewmodels="clr-namespace:MinhaMega.ViewModels"
-             x:DataType="viewmodels:HomePageViewModel"
+             x:DataType="viewmodels:MegaSenaViewModel"
             xmlns:models="clr-namespace:MinhaMega.Models"
-             Title="HomePage"
+             Title="MegaSena"
              xmlns:local="clr-namespace:MinhaMega.Conversores">
 
     <ContentPage.Resources>
@@ -13,7 +13,7 @@
             <Style TargetType="Ellipse" x:Key="dezenasSorteadas">
                 <Setter Property="HeightRequest" Value="42"/>
                 <Setter Property="WidthRequest" Value="42"/>
-                <Setter Property="Fill" Value="#306f4d"/>
+                <Setter Property="Fill" Value="#07a120"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
@@ -36,11 +36,11 @@
                 <Setter Property="FontSize" Value="15"/>
                 <Setter Property="HorizontalOptions" Value="End"/>
                 <Setter Property="Padding" Value="8"/>
-                <Setter Property="BackgroundColor" Value="#306f4d"/>
+                <Setter Property="BackgroundColor" Value="#07a120"/>
                 <Setter Property="Margin" Value="60,0,0,0"/>
                 <Setter Property="HeightRequest" Value="30"/>
                 <Setter Property="WidthRequest" Value="150"/>
-                
+
             </Style>
             <Style TargetType="Label" x:Key="LabelTitulo">
                 <Setter Property="HorizontalOptions" Value="Center"/>
@@ -66,7 +66,12 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <StackLayout   Padding="2" Margin="2">
+        <StackLayout   Padding="2" Margin="2" IsEnabled="{Binding Carregando}">
+            <StackLayout IsVisible="{Binding Carregando}" Margin="0,190,0,900">
+
+                <Label  Text="Carregando" Padding="0,4,0,10"  Style="{StaticResource LabelTitulo}" HorizontalOptions="Center"/>
+                <ActivityIndicator IsRunning="{Binding Carregando}" HeightRequest="100" WidthRequest="100"/>
+            </StackLayout>
             <HorizontalStackLayout>
 
                 <Label  Text="Concurso: " Padding="0,4,0,0"  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
@@ -80,7 +85,7 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Start" Padding="0,10,0,0">
-                
+
                 <Label  Text="Data concurso: "  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
 
                 <Label Style="{StaticResource LabelTitulo}" Text="{Binding ResultadoMega.DataApuracao}"   HorizontalOptions="End" HorizontalTextAlignment="End"/>
@@ -144,9 +149,9 @@
                 </CollectionView>
             </StackLayout>
 
-            <StackLayout HorizontalOptions="Center" Margin="10">
+            <StackLayout HorizontalOptions="Center">
                 <Label Text="Dezenas Sorteadas" Style="{StaticResource LabelTitulo}"/>
-                <CollectionView ItemsSource="{Binding ResultadoMega.ListaDezenas}" Margin="0"  ItemsLayout="HorizontalList">
+                <CollectionView ItemsSource="{Binding ResultadoMega.ListaDezenas}" ItemsLayout="HorizontalList" HorizontalOptions="Center">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid HorizontalOptions="Center" Padding="12">
@@ -198,6 +203,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </StackLayout>
+            
         </StackLayout>
     </ScrollView>
 </ContentPage>

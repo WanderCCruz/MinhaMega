@@ -7,11 +7,13 @@ using MinhaMega.Models;
 namespace MinhaMega.ViewModels
 {
     [QueryProperty(nameof(ResultadoMega), nameof(ResultadoMega))]
-    public partial class HomePageViewModel : ObservableObject
+    public partial class MegaSenaViewModel : ObservableObject
     {
         private readonly ILoteriaApi<MegaSena> _api;
+        [ObservableProperty]
+        bool carregando;
 
-        public HomePageViewModel(ILoteriaApi<MegaSena> api)
+        public MegaSenaViewModel(ILoteriaApi<MegaSena> api)
         {
             _api = api;
         }
@@ -29,6 +31,7 @@ namespace MinhaMega.ViewModels
         {
             try
             {
+                Carregando = true;
                 if (concurso == null)
                     throw new IndexOutOfRangeException("Digite um numero de concurso");
 #if ANDROID
@@ -61,6 +64,7 @@ namespace MinhaMega.ViewModels
 #endif
                 await Shell.Current.DisplayAlert("Atenção", msg, "OK");
             }
+            finally { Carregando = false; }
         }
     }
 }

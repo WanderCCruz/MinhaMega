@@ -5,32 +5,26 @@
              xmlns:viewmodels="clr-namespace:MinhaMega.ViewModels"
              x:DataType="viewmodels:MainPageViewModel">
 
-    <Grid>
-        <VerticalStackLayout
-           >
-            <Label
-                Text="Loterias"
-                FontSize="24"
-                HorizontalOptions="Center" 
-                VerticalTextAlignment="Center"
-                VerticalOptions="Start"
-                 />
+    <StackLayout Padding="20" Spacing="10">
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Command="{Binding ParaMainPageCommand}"
-                HorizontalOptions="Center" />
-            <Button
+        <Grid>
+            <VerticalStackLayout Padding="5">
+                <Button
                 x:Name="MegaSenaBtn"
                 ImageSource="logomegasena.png"
-                BackgroundColor=""
+                BackgroundColor="#07a120"
                 SemanticProperties.Hint=""
                 Command="{Binding BuscaMegaSenaCommand}"
                 HorizontalOptions="Center" WidthRequest="180"  HeightRequest="50"/>
+            </VerticalStackLayout>
+        </Grid>
 
-        </VerticalStackLayout>
-    </Grid>
+        <StackLayout Margin="0,150,0,0" IsVisible="{Binding Carregando}">
+            <Label  Text="Carregando" FontAttributes="Bold" Padding="0,4,0,10" FontSize="20" HorizontalOptions="Center"/>
+            <ActivityIndicator IsRunning="{Binding Carregando}" HeightRequest="100" WidthRequest="100"/>
+        </StackLayout>
+
+    </StackLayout>
+
 
 </ContentPage>
