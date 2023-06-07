@@ -2,12 +2,12 @@ using MinhaMega.ViewModels;
 
 namespace MinhaMega.Views;
 
-public partial class HomePage : ContentPage
+public partial class MegaSena : ContentPage
 {
-    public HomePage(HomePageViewModel homePageViewModel)
+    public MegaSena(MegaSenaViewModel megaSenaViewModel)
 	{
-		InitializeComponent();
-		BindingContext = homePageViewModel;
+        InitializeComponent();
+		BindingContext = megaSenaViewModel;
 	}
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
