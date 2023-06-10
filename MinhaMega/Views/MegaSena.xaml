@@ -11,8 +11,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Ellipse" x:Key="dezenasSorteadas">
-                <Setter Property="HeightRequest" Value="42"/>
-                <Setter Property="WidthRequest" Value="42"/>
+                <Setter Property="HeightRequest" Value="35"/>
+                <Setter Property="WidthRequest" Value="35"/>
                 <Setter Property="Fill" Value="#07a120"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
@@ -20,31 +20,31 @@
             </Style>
             <Style TargetType="Label" x:Key="LabelRateioPremio">
                 <Setter Property="HorizontalOptions" Value="Start"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="12"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="Padding" Value="8"/>
             </Style>
             <Style TargetType="Label" x:Key="LabelRateioPremioCabeçalho">
                 <Setter Property="HorizontalOptions" Value="Start"/>
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontSize" Value="10"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="Padding" Value="8"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
             <Style TargetType="Button" x:Key="ButtonBuscaConcurso">
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontSize" Value="12"/>
                 <Setter Property="HorizontalOptions" Value="End"/>
                 <Setter Property="Padding" Value="8"/>
                 <Setter Property="BackgroundColor" Value="#07a120"/>
-                <Setter Property="Margin" Value="60,0,0,0"/>
-                <Setter Property="HeightRequest" Value="30"/>
-                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="Margin" Value="15,0,0,0"/>
+                <Setter Property="HeightRequest" Value="44"/>
+                <Setter Property="WidthRequest" Value="100"/>
 
             </Style>
             <Style TargetType="Label" x:Key="LabelTitulo">
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="14"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
@@ -52,8 +52,8 @@
             <Style TargetType="Entry" x:Key="EntryBuscaConcurso">
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="FontSize" Value="24"/>
-                <Setter Property="Margin" Value="0,-15,0,0"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="0,-10,0,0"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="Keyboard" Value="Numeric"/>
                 <Setter Property="MaxLength" Value="4"/>
@@ -66,144 +66,144 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <StackLayout   Padding="2" Margin="2" IsEnabled="{Binding Carregando}">
-            <StackLayout IsVisible="{Binding Carregando}" Margin="0,190,0,900">
+        <StackLayout   Padding="2" Margin="2">
+            <StackLayout IsVisible="{Binding Carregando}" Margin="0,190,0,4500">
 
                 <Label  Text="Carregando" Padding="0,4,0,10"  Style="{StaticResource LabelTitulo}" HorizontalOptions="Center"/>
                 <ActivityIndicator IsRunning="{Binding Carregando}" HeightRequest="100" WidthRequest="100"/>
             </StackLayout>
-            <HorizontalStackLayout>
+            <StackLayout IsVisible="{Binding Carregando, Converter={local:InverseBooleanConverter}}">
+                <HorizontalStackLayout>
 
-                <Label  Text="Concurso: " Padding="0,4,0,0"  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
+                    <Label  Text="Concurso: " Padding="0,4,0,0"  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
 
-                <Entry x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}" HorizontalOptions="Start"/>
+                    <Entry x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}" HorizontalOptions="Start"/>
 
-                <Button  x:Name="Busca" Style="{StaticResource ButtonBuscaConcurso}" ImageSource="search.svg" HorizontalOptions="End"
+                    <Button  x:Name="Busca" Style="{StaticResource ButtonBuscaConcurso}" ImageSource="search.svg" HorizontalOptions="End"
                              Command="{Binding BuscaConcursoCommand}" 
                             CommandParameter="{Binding Source={x:Reference EntryConcurso}, Path=Text}"/>
 
-            </HorizontalStackLayout>
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout HorizontalOptions="Start" Padding="0,10,0,0">
+                <HorizontalStackLayout HorizontalOptions="Start" Padding="0,10,0,0">
 
-                <Label  Text="Data concurso: "  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
+                    <Label  Text="Data concurso: "  Style="{StaticResource LabelTitulo}" HorizontalOptions="Start"/>
 
-                <Label Style="{StaticResource LabelTitulo}" Text="{Binding ResultadoMega.DataApuracao}"   HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                    <Label Style="{StaticResource LabelTitulo}" Text="{Binding ResultadoMega.DataApuracao}"   HorizontalOptions="End" HorizontalTextAlignment="End"/>
 
-            </HorizontalStackLayout>
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout Padding="0,10,0,0">
+                <HorizontalStackLayout Padding="0,10,0,0">
 
-                <Label Style="{StaticResource LabelTitulo}" Text="Próximo concurso: "/>
+                    <Label Style="{StaticResource LabelTitulo}" Text="Próximo concurso: "/>
 
-                <Label Style="{StaticResource LabelTitulo}" Text="{Binding ResultadoMega.DataProximoConcurso}" />
+                    <Label Style="{StaticResource LabelTitulo}" Text="{Binding ResultadoMega.DataProximoConcurso}" />
 
-            </HorizontalStackLayout>
+                </HorizontalStackLayout>
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Padding="0,10,0,0">
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Padding="0,10,0,0">
 
-                <Label Text="Prêmio acumulado!!! " IsVisible="{Binding ResultadoMega.Acumulado}" Style="{StaticResource LabelTitulo}"/>
+                    <Label Text="Prêmio acumulado!!! " IsVisible="{Binding ResultadoMega.Acumulado}" Style="{StaticResource LabelTitulo}"/>
 
-            </HorizontalStackLayout>
+                </HorizontalStackLayout>
 
-            <StackLayout  HorizontalOptions="CenterAndExpand" Padding="0,10,0,0">
+                <StackLayout  HorizontalOptions="CenterAndExpand" Padding="0,10,0,0">
 
-                <Label Text="Prêmio próximo concurso" Style="{StaticResource LabelTitulo}"/>
+                    <Label Text="Prêmio próximo concurso" Style="{StaticResource LabelTitulo}"/>
 
-                <Label Text="{Binding ResultadoMega.ValorEstimadoProximoConcurso, Converter={local:DoubleToMoneyConverter}}" Style="{StaticResource LabelTitulo}" FontSize="26"/>
+                    <Label Text="{Binding ResultadoMega.ValorEstimadoProximoConcurso, Converter={local:DoubleToMoneyConverter}}" Style="{StaticResource LabelTitulo}" FontSize="18"/>
 
+                </StackLayout>
+
+                <StackLayout Margin="0,10,0,0">
+                    <Grid BackgroundColor="#ebebeb" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="83"></ColumnDefinition>
+                            <ColumnDefinition Width="89"></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Acertos" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
+                        <Label Grid.Column="1" Text="Ganhadores" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
+                        <Label Grid.Column="2" Text="Prêmio" Style="{StaticResource LabelRateioPremioCabeçalho}" ></Label>
+                    </Grid>
+                    <CollectionView ItemsSource="{Binding ResultadoMega.ListaRateioPremio}" >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:RateioPremio">
+                                <Grid BackgroundColor="#ebebeb">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition ></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions >
+                                        <ColumnDefinition Width="83"></ColumnDefinition>
+                                        <ColumnDefinition Width="89"></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding DecricaoFaixa}" Style="{StaticResource LabelRateioPremio}"></Label>
+                                    <Label Grid.Column="1" Text="{Binding NumeroDeGanhadores}" Style="{StaticResource LabelRateioPremio}"></Label>
+                                    <Label Grid.Column="2" Text="{Binding ValorPremio, Converter={local:DoubleToMoneyConverter}}" Style="{StaticResource LabelRateioPremio}"></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="Dezenas Sorteadas" Style="{StaticResource LabelTitulo}"/>
+                    <CollectionView ItemsSource="{Binding ResultadoMega.ListaDezenas}" ItemsLayout="HorizontalList" HorizontalOptions="Center">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <Grid HorizontalOptions="Center" Padding="6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions >
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Text="{Binding .}" CornerRadius="50" FontAttributes="Bold" Margin="4" FontSize="12"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <StackLayout  IsVisible="{Binding ResultadoMega.Acumulado,Converter={local:InverseBooleanConverter}}">
+                    <Grid BackgroundColor="#ebebeb">
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Ganhadores" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
+                        <Label Grid.Column="1" Text="Municipio" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
+                        <Label Grid.Column="2" Text="UF" Style="{StaticResource LabelRateioPremioCabeçalho}" ></Label>
+                    </Grid>
+                    <CollectionView ItemsSource="{Binding ResultadoMega.ListaMunicipioUFGanhadores}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:ListaMunicipioUFGanhadores">
+                                <Grid BackgroundColor="#ebebeb">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition ></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions >
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Ganhadores}" Style="{StaticResource LabelRateioPremio}" ></Label>
+                                    <Label Grid.Column="1" Text="{Binding Municipio}"  Style="{StaticResource LabelRateioPremio}" ></Label>
+                                    <Label Grid.Column="2" Text="{Binding UF}"  Style="{StaticResource LabelRateioPremio}" ></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
             </StackLayout>
-
-            <StackLayout Margin="0,10,0,0">
-                <Grid BackgroundColor="#ebebeb" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition ></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions >
-                        <ColumnDefinition Width="110"></ColumnDefinition>
-                        <ColumnDefinition Width="120"></ColumnDefinition>
-                        <ColumnDefinition ></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="Acertos" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
-                    <Label Grid.Column="1" Text="Ganhadores" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
-                    <Label Grid.Column="2" Text="Prêmio" Style="{StaticResource LabelRateioPremioCabeçalho}" ></Label>
-                </Grid>
-                <CollectionView ItemsSource="{Binding ResultadoMega.ListaRateioPremio}" >
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:RateioPremio">
-                            <Grid BackgroundColor="#ebebeb">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition ></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions >
-                                    <ColumnDefinition Width="110"></ColumnDefinition>
-                                    <ColumnDefinition Width="120"></ColumnDefinition>
-                                    <ColumnDefinition ></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding DecricaoFaixa}" Style="{StaticResource LabelRateioPremio}"></Label>
-                                <Label Grid.Column="1" Text="{Binding NumeroDeGanhadores}" Style="{StaticResource LabelRateioPremio}"></Label>
-                                <Label Grid.Column="2" Text="{Binding ValorPremio, Converter={local:DoubleToMoneyConverter}}" Style="{StaticResource LabelRateioPremio}"></Label>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-
-            <StackLayout HorizontalOptions="Center">
-                <Label Text="Dezenas Sorteadas" Style="{StaticResource LabelTitulo}"/>
-                <CollectionView ItemsSource="{Binding ResultadoMega.ListaDezenas}" ItemsLayout="HorizontalList" HorizontalOptions="Center">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid HorizontalOptions="Center" Padding="12">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions >
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Ellipse Style="{StaticResource dezenasSorteadas}"/>
-                                <Label Text="{Binding .}" TextColor="White" FontAttributes="Bold" FontSize="22" Padding="8" HorizontalOptions="Center"/>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-
-            <StackLayout  IsVisible="{Binding ResultadoMega.Acumulado,Converter={local:InverseBooleanConverter}}">
-                <Grid BackgroundColor="#ebebeb">
-                    <Grid.RowDefinitions>
-                        <RowDefinition ></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions >
-                        <ColumnDefinition Width="120"></ColumnDefinition>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="Ganhadores" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
-                    <Label Grid.Column="1" Text="Municipio" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
-                    <Label Grid.Column="2" Text="UF" Style="{StaticResource LabelRateioPremioCabeçalho}" ></Label>
-                </Grid>
-                <CollectionView ItemsSource="{Binding ResultadoMega.ListaMunicipioUFGanhadores}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:ListaMunicipioUFGanhadores">
-                            <Grid BackgroundColor="#ebebeb">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition ></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions >
-                                    <ColumnDefinition Width="120"></ColumnDefinition>
-                                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                                    <ColumnDefinition Width="100"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Ganhadores}" Style="{StaticResource LabelRateioPremio}" ></Label>
-                                <Label Grid.Column="1" Text="{Binding Municipio}"  Style="{StaticResource LabelRateioPremio}" ></Label>
-                                <Label Grid.Column="2" Text="{Binding UF}"  Style="{StaticResource LabelRateioPremio}" ></Label>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-            
         </StackLayout>
     </ScrollView>
 </ContentPage>

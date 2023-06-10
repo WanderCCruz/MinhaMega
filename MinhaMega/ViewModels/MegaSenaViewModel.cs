@@ -31,13 +31,13 @@ namespace MinhaMega.ViewModels
         {
             try
             {
-                Carregando = true;
                 if (concurso == null)
                     throw new IndexOutOfRangeException("Digite um numero de concurso");
 #if ANDROID
                 if(Platform.CurrentActivity.CurrentFocus != null)
                     Platform.CurrentActivity.HideKeyboard(Platform.CurrentActivity.CurrentFocus);
 #endif
+                Carregando = true;
                 if (Connectivity.Current.NetworkAccess == NetworkAccess.Internet)
                 {
                     var resul = await _api.Concurso(nameof(MegaSena), (concurso));
