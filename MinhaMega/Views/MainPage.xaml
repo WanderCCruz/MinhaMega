@@ -13,9 +13,8 @@
                 x:Name="MegaSenaBtn"
                 ImageSource="logomegasena.png"
                 BackgroundColor="#07a120"
-                SemanticProperties.Hint=""
                 Command="{Binding BuscaMegaSenaCommand}"
-                HorizontalOptions="Center" WidthRequest="180"  HeightRequest="50"/>
+                HorizontalOptions="Center" WidthRequest="180"  HeightRequest="42"/>
             </VerticalStackLayout>
         </Grid>
 
