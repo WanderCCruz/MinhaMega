@@ -6,4 +6,9 @@
 <h1 align="center"> Descrição do projeto </h1>
 A finalidade principal do projeto é facilitar a consulta dos resultados da mega-sena para pessoas que não tem facilidade para usar o celular, pois por mais que seja simples fazer essa pesquisa na internet, percebi que muitas pessoas sempre pedem para alguem fazer isso por elas, como no meu caso, é meu sogro e como estava curioso para "testar" a tecnologia resolvi cria esse pequeno projeto.
 
-
+<h4 align="center"> 
+    :construction:  Projeto em construção  :construction:
+</h4>
+# :hammer: Funcionalidades do projeto<br/>
+- Funcionalidade 1: Resultado Mega-Sena<br/>
+- Funcionalidade 2: Resultado Lotofacil - Desenvolvimento futuro
