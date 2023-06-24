@@ -14,13 +14,14 @@
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="HorizontalTextAlignment" Value="Start"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="Padding" Value="2,5,0,5"/>
+                <Setter Property="Padding" Value="0,5,0,5"/>
                 <Setter Property="FontAutoScalingEnabled" Value="true"/>
             </Style>
             <Style TargetType="Label" x:Key="LabelRateioPremioCabeçalho">
                 <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="Padding" Value="2,0,0,0"/>
+                <Setter Property="Padding" Value="0,5,0,5"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontAutoScalingEnabled" Value="true"/>
             </Style>
@@ -63,9 +64,9 @@
                 <StackLayout>
                     <HorizontalStackLayout>
 
-                        <Label Grid.Column="0"  Text="Concurso: " Padding="0,4,0,0" FontAttributes="Bold"/>
+                        <Label Text="Concurso: " Padding="0,4,0,0" FontAttributes="Bold"/>
 
-                        <Entry HorizontalOptions="Start" Grid.Column="1" x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}"/>
+                        <Entry HorizontalOptions="Start" x:Name="EntryConcurso" Style="{StaticResource EntryBuscaConcurso}" Text="{Binding ResultadoMega.Numero}"/>
                         
                     </HorizontalStackLayout>
 
@@ -111,8 +112,8 @@
                             <RowDefinition ></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions >
-                            <ColumnDefinition ></ColumnDefinition>
-                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="90"  ></ColumnDefinition>
+                            <ColumnDefinition Width="118" ></ColumnDefinition>
                             <ColumnDefinition ></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Acertos" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
@@ -122,14 +123,14 @@
                     <CollectionView ItemsSource="{Binding ResultadoMega.ListaRateioPremio}" >
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:RateioPremio">
-                                <Grid BackgroundColor="#ebebeb">
+                                <Grid BackgroundColor="#ebebeb" >
                                     <Grid.RowDefinitions>
                                         <RowDefinition ></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions >
-                                        <ColumnDefinition ></ColumnDefinition>
-                                        <ColumnDefinition ></ColumnDefinition>
-                                        <ColumnDefinition ></ColumnDefinition>
+                                        <ColumnDefinition Width="90" ></ColumnDefinition>
+                                        <ColumnDefinition Width="118"></ColumnDefinition>
+                                        <ColumnDefinition  ></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{Binding DecricaoFaixa}" Style="{StaticResource LabelRateioPremio}"></Label>
                                     <Label Grid.Column="1" Text="{Binding NumeroDeGanhadores}" Style="{StaticResource LabelRateioPremio}"></Label>
@@ -141,7 +142,7 @@
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="Center">
-                    <Label Text="Dezenas Sorteadas" Style="{StaticResource LabelTitulo}"/>
+                    <Label Text="Dezenas Sorteadas" Style="{StaticResource LabelTitulo}" HorizontalOptions="Center"/>
                     <CollectionView ItemsSource="{Binding ResultadoMega.ListaDezenas}" ItemsLayout="HorizontalList" HorizontalOptions="Center">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="x:String">
@@ -160,14 +161,14 @@
                 </StackLayout>
 
                 <StackLayout  IsVisible="{Binding ResultadoMega.Acumulado,Converter={local:InverseBooleanConverter}}" Padding="0,5,0,0">
-                    <Grid BackgroundColor="#ebebeb">
+                    <Grid BackgroundColor="#ebebeb" ColumnSpacing="8">
                         <Grid.RowDefinitions>
                             <RowDefinition ></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="118"></ColumnDefinition>
                             <ColumnDefinition ></ColumnDefinition>
-                            <ColumnDefinition ></ColumnDefinition>
-                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Ganhadores" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
                         <Label Grid.Column="1" Text="Municipio" Style="{StaticResource LabelRateioPremioCabeçalho}"  ></Label>
@@ -176,14 +177,14 @@
                     <CollectionView ItemsSource="{Binding ResultadoMega.ListaMunicipioUFGanhadores}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ListaMunicipioUFGanhadores">
-                                <Grid BackgroundColor="#ebebeb">
+                                <Grid BackgroundColor="#ebebeb" ColumnSpacing="8">
                                     <Grid.RowDefinitions>
                                         <RowDefinition ></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions >
+                                        <ColumnDefinition Width="118"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{Binding Ganhadores}" Style="{StaticResource LabelRateioPremio}" ></Label>
                                     <Label Grid.Column="1" Text="{Binding Municipio}"  Style="{StaticResource LabelRateioPremio}" ></Label>
